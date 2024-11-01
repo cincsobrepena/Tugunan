@@ -1,13 +1,20 @@
-import { useState } from "react"
+import { useRef } from "react"
+import { useAuth } from "../Components/AuthProvider";
 
-const Lobby = ({onJoinRoom}) => {
+const Lobby = () => {
 
-	const [username, setUsername] = useState("");
-	const [room, setRoom] = useState("");
+  const { joinRoom } = useAuth();
 
-	const handleJoinButton = () => {
-		onJoinRoom(username, room);
-	}
+  const username = useRef(null);
+  const room = useRef(null);
+
+  const handleJoinRoom = () => {
+    if (username.current.value !== "" && room.current.value !== "") {
+      joinRoom(username.current.value, room.current.value);
+      username.current.value = "";
+      room.current.value = "";
+    }
+  }
 
   return (
 		<div className="min-h-screen flex items-center justify-center">
@@ -16,18 +23,18 @@ const Lobby = ({onJoinRoom}) => {
 				<input 
 					className="text-black mt-5 px-5 py-1 rounded-xl outline-none"
 					type="text"
-					name=""
-					id=""
 					placeholder="Username"
-					onChange={(e) => setUsername(e.target.value)}/>
+          ref={username}
+          onKeyDown={(event) => {
+          event.key === "Enter" && handleJoinRoom(); }}/>
 				<input 
 					className="text-black mt-5 px-5 py-1 rounded-xl outline-none"
 					type="text"
-					name=""
-					id=""
 					placeholder="Room"
-					onChange={(e) => setRoom(e.target.value)}/>
-				<button className="uppercase text-white font-semibold bg-slate-700 hover:bg-slate-800 w-fit my-5 px-5 py-3 rounded-lg " type="button" onClick={handleJoinButton}>Join</button>
+          ref={room}
+          onKeyDown={(event) => {
+          event.key === "Enter" && handleJoinRoom(); }}/>
+				<button className="uppercase text-white font-semibold bg-slate-700 hover:bg-slate-800 w-fit my-5 px-5 py-3 rounded-lg " type="button" onClick={handleJoinRoom}>Join</button>
 			</div>
 		</div>
   )
