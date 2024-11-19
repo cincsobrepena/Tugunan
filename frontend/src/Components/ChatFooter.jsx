@@ -16,7 +16,7 @@ const ChatFooter = () => {
   }
 
   return (
-    <div className='flex justify-between bg-slate-950 shadow-lg h-[90px] w-[100%] mx-auto px-5 py-5'>
+    <div className='flex justify-between bg-green-700 shadow-lg h-[90px] w-[100%] mx-auto px-5 py-5'>
       <input
         className='text-black text-2xl w-[85%] rounded-full py-2 px-3'
         type="text"

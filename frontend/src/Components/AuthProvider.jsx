@@ -47,12 +47,12 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  socket.on("receive_message", (data) => {
-    console.log(data.author);
-  });
+  // const updateMessageList = (data) => {
+  //   setMessageList((list) => [...list, data]);
+  // }
 
   return (
-    <AuthContext.Provider value={{socket, user, joinRoom, leaveRoom, sendMessage, messageList}}>
+    <AuthContext.Provider value={{socket, user, joinRoom, leaveRoom, sendMessage, messageList, setMessageList}}>
       {children}
     </AuthContext.Provider>
   );
