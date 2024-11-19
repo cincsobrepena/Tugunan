@@ -10,4 +10,8 @@
 
 body {
   background-color: #2b2b2b;
+  background-image: url("./assets/img/bg.jpg");
+  backdrop-filter: blur(10px);
+  background-position: center;
+  background-size: cover;
 }
