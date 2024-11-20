@@ -9,7 +9,9 @@ const ChatBody = () => {
   
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessageList((list) => [...list, data]);
+      if (data.author !== user.author){
+        setMessageList((list) => [...list, data]);
+      }
     });
   }, [socket, setMessageList]);
 

@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
 
   const leaveRoom = () => {
     setUser(null);
+    setMessageList([]);
   };
 
   const sendMessage = async (message) => {

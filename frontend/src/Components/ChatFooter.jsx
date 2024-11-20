@@ -16,9 +16,9 @@ const ChatFooter = () => {
   }
 
   return (
-    <div className='flex justify-between bg-green-700 shadow-lg h-[90px] w-[100%] mx-auto px-5 py-5'>
+    <div className='flex justify-evenly items-center bg-green-700 shadow-lg h-[90px] w-[100%] mx-auto px-5 py-5'>
       <input
-        className='text-black text-2xl w-[85%] rounded-full py-2 px-3'
+        className='text-black text-2xl w-[85%] rounded-md py-2 px-3'
         type="text"
         placeholder='Hi...'
         ref={currentMessage}
@@ -26,7 +26,7 @@ const ChatFooter = () => {
           event.key === "Enter" && handleSend();
         }}/>
       <RiSendPlane2Fill
-      className='w-[10%] text-5xl text-center mx-auto'
+      className=' text-5xl text-center'
       onClick={handleSend}/>
     </div>
   )
